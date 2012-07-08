@@ -40,7 +40,7 @@ public class Main extends JFrame{
 		public HexDraw getAsImage() {
 			HexDraw d = new HexDraw(this);
 			try {
-				d.setImage("I", ImageIO.read(new File("res/void_hex.png")));
+				d.setImage("I", ImageIO.read(new File("test/res/void_hex.png")));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
