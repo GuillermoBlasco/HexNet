@@ -38,8 +38,9 @@ public abstract class Hexagon extends HexPoint {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Must return a object that represents the current state of this Hexagon
+	 * object.
+	 * @return A HexDraw object containing the draws that represents this.
 	 */
 	public abstract HexDraw getAsDraw();
 }

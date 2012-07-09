@@ -15,8 +15,18 @@
 //	along with HexNet.  If not, see <http://www.gnu.org/licenses/>.
 package com.softwsgbj.hexnet;
 
+/**
+ * Interface to all map builders objects.
+ * @author GuillermoBlascoJimenez
+ * @version 1.0
+ * @param <H> Class of hexagons over map is built.
+ */
 public interface HexMapBuilder<H extends Hexagon> {
 
+	/**
+	 * Returns a complete map built.
+	 * @return
+	 */
 	public Map<H> buildMap();
 	
 }
