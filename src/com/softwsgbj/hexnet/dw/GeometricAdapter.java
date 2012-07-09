@@ -1,3 +1,18 @@
+//	LICENSE:
+//	GeometricAdapter.java is part of HexNet.
+//
+//	HexNet is free software: you can redistribute it and/or modify
+//	it under the terms of the GNU General Public License as published by
+//	the Free Software Foundation, either version 3 of the License, or
+//	(at your option) any later version.
+//
+//	HexNet is distributed in the hope that it will be useful,
+//	but WITHOUT ANY WARRANTY; without even the implied warranty of
+//	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//	GNU General Public License for more details.
+//
+//	You should have received a copy of the GNU General Public License
+//	along with HexNet.  If not, see <http://www.gnu.org/licenses/>.
 package com.softwsgbj.hexnet.dw;
 
 import java.util.LinkedList;
@@ -28,20 +43,19 @@ public class GeometricAdapter {
 	}
 	public GeoPoint getPointOfHexagon(GeoElements.OfHexagon.Points which, HexPoint p){
 
-		GeoPoint g = new GeoPoint(GeoElements.OfRectangleContainer.Points.APEX_NW, getXof(p.x(), p.y()), getYof(p.x(), p.y()));
+		GeoPoint g = new GeoPoint(GeoElements.OfRectangle.Points.APEX_NW, getXof(p.x(), p.y()), getYof(p.x(), p.y()));
 		changePointReference(g, which);
 		return g;
 	}
 	public GeoSegment getSegmentOfHexagon(GeoElements.OfHexagon.Segments which, HexPoint p){
 		return new GeoSegment(which, getPointOfHexagon(which.getOrigin(), p), getPointOfHexagon(which.getDestiny(), p));
-		
 	}
-	public GeoPoint getPointOfRectangleContainer(GeoElements.OfRectangleContainer.Points which, HexPoint p){
-		GeoPoint g = new GeoPoint(GeoElements.OfRectangleContainer.Points.APEX_NW, getXof(p.x(), p.y()), getYof(p.x(), p.y()));
+	public GeoPoint getPointOfRectangleContainer(GeoElements.OfRectangle.Points which, HexPoint p){
+		GeoPoint g = new GeoPoint(GeoElements.OfRectangle.Points.APEX_NW, getXof(p.x(), p.y()), getYof(p.x(), p.y()));
 		changePointReference(g, which);
 		return g;
 	}
-	public GeoSegment getSegmentOfRectangleContainer(GeoElements.OfRectangleContainer.Segments which, HexPoint p){
+	public GeoSegment getSegmentOfRectangleContainer(GeoElements.OfRectangle.Segments which, HexPoint p){
 		return new GeoSegment(which, getPointOfRectangleContainer(which.getOrigin(), p), getPointOfRectangleContainer(which.getDestiny(), p));
 	}
 	public HexImage getImageOf(Hexagon hex, Point reference){
@@ -52,11 +66,13 @@ public class GeometricAdapter {
 	public GeoPoint getPoint(GeoElements.Point ref, HexPoint p){
 		if(ref instanceof GeoElements.OfHexagon.Points)
 			return getPointOfHexagon((GeoElements.OfHexagon.Points) ref, p);
-		else if(ref instanceof GeoElements.OfRectangleContainer.Points)
-			return getPointOfRectangleContainer((GeoElements.OfRectangleContainer.Points) ref, p);
+		else if(ref instanceof GeoElements.OfRectangle.Points)
+			return getPointOfRectangleContainer((GeoElements.OfRectangle.Points) ref, p);
 		else return null;
-	}
-	
+	}/*
+	public HexPoint getPoint(double x, double y){
+		int x_coord = (x % this.getR)
+	}*/
 	public void actualizeChilds(){
 		HexImage[] childs_copy = childs.toArray(new HexImage[childs.size()]);
 		for(int i = 0; i < childs_copy.length; i++){

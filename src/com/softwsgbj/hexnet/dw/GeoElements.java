@@ -1,3 +1,18 @@
+//	LICENSE:
+//	GeoElements.java is part of HexNet.
+//
+//	HexNet is free software: you can redistribute it and/or modify
+//	it under the terms of the GNU General Public License as published by
+//	the Free Software Foundation, either version 3 of the License, or
+//	(at your option) any later version.
+//
+//	HexNet is distributed in the hope that it will be useful,
+//	but WITHOUT ANY WARRANTY; without even the implied warranty of
+//	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//	GNU General Public License for more details.
+//
+//	You should have received a copy of the GNU General Public License
+//	along with HexNet.  If not, see <http://www.gnu.org/licenses/>.
 package com.softwsgbj.hexnet.dw;
 
 public class GeoElements {
@@ -160,7 +175,7 @@ public class GeoElements {
 		}
 	}
 	
-	public static class OfRectangleContainer {
+	public static class OfRectangle {
 		public enum NotablePoints implements NotablePoint{
 			CENTER, APEX, MIDPOINT;
 		}
@@ -178,7 +193,7 @@ public class GeoElements {
 			MIDPOINT_SW_NW	(NotablePoints.MIDPOINT,0.0, 1.0),
 			MIDPOINT_NW_NE	(NotablePoints.MIDPOINT,1.0, 0.0);
 			
-			private OfRectangleContainer.NotablePoints notable;
+			private OfRectangle.NotablePoints notable;
 			private double x_radius;
 			private double y_apothems;
 			Points(NotablePoints notable,double x_radius,  double y_apothems){
@@ -218,22 +233,22 @@ public class GeoElements {
 			DIAGONAL_SE_NW 	(NotableSegments.DIAGONAL, 
 					Points.APEX_NW, Points.APEX_SE);
 			
-			private OfRectangleContainer.Points origin;
-			private OfRectangleContainer.Points destiny;
+			private OfRectangle.Points origin;
+			private OfRectangle.Points destiny;
 
-			private OfRectangleContainer.NotableSegments notable;
+			private OfRectangle.NotableSegments notable;
 			Segments(NotableSegments  notable, Points origin, Points destiny){
 				this.notable = notable;
 				this.origin = origin;
 				this.destiny = destiny;
 			}
-			public OfRectangleContainer.Points getOrigin(){
+			public OfRectangle.Points getOrigin(){
 				return this.origin;
 			}
-			public OfRectangleContainer.Points getDestiny(){
+			public OfRectangle.Points getDestiny(){
 				return this.destiny;
 			}
-			public OfRectangleContainer.NotableSegments getNotable(){
+			public OfRectangle.NotableSegments getNotable(){
 				return this.notable;
 			}
 		}
