@@ -10,5 +10,5 @@ public abstract class Hexagon extends HexPoint {
 		super(x, y);
 	}
 
-	public abstract HexDraw getAsImage();
+	public abstract HexDraw getAsDraw();
 }

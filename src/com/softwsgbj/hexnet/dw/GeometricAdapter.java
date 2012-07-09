@@ -12,20 +12,15 @@ public class GeometricAdapter {
 	private final Map<?> map;
 	private LinkedList<HexImage> childs;
 	
-	//private GeoElements.OfReference.Points reference_origin;
 	private GeoElements.OfHexagon.NotableSegments reference_vector;
 	private double reference_vector_size;
 	
 	public GeometricAdapter(Map<?> m){
 		this.map = m;
 		childs = new LinkedList<HexImage> ();
-	//	reference_origin = GeoElements.OfReference.Points.APEX_NW;
 		reference_vector = GeoElements.OfHexagon.NotableSegments.RADIUS;
 		reference_vector_size = 1.0;
 	}
-	//public void setReference(GeoElements.OfReference.Points ref){
-	//	reference_origin = ref;
-	//}
 	public void setMetric(GeoElements.OfHexagon.NotableSegments ref, double value){
 		reference_vector = ref;
 		if(value > 0)
@@ -75,7 +70,25 @@ public class GeometricAdapter {
 	public double sizeY(){
 		return ((map.getBoundY())*2 +1.0)*getApothem();
 	}
-protected double getXof(int x, int y){
+	public void changePointReference(HexImage hexImage, Point new_ref) {
+		changePointReference(hexImage.getPoint(), new_ref);
+	}	
+	public void changePointReference(GeoPoint old, Point new_ref) {
+		old.setX(old.getX() - old.getReferedElement().getXRadiusToA()*getRadius());
+		old.setX(old.getX() + new_ref.getXRadiusToA()*getRadius());
+		old.setY(old.getY() - old.getReferedElement().getYApothemsToA()*getApothem());
+		old.setY(old.getY() + new_ref.getYApothemsToA()*getApothem());
+		old.setReferedElement(new_ref);
+	}
+	void detach(HexImage child){
+		this.childs.remove(child);
+	}
+	void attach(HexImage child){
+		this.childs.add(child);
+	}
+	
+	
+	protected double getXof(int x, int y){
 		return (x*1.5 )*getRadius(); 
 	}
 	protected double getYof(int x, int y){
@@ -93,22 +106,5 @@ protected double getXof(int x, int y){
 	protected void actualizeChildRefernce(HexImage child){
 		GeoPoint p = this.getPoint(child.getPoint().getReferedElement(), child.getHexagon());
 		child.setReference(p);
-	}
-	
-	void detach(HexImage child){
-		this.childs.remove(child);
-	}
-	void attach(HexImage child){
-		this.childs.add(child);
-	}
-	public void changePointReference(HexImage hexImage, Point new_ref) {
-		changePointReference(hexImage.getPoint(), new_ref);
-	}	
-	public void changePointReference(GeoPoint old, Point new_ref) {
-		old.setX(old.getX() - old.getReferedElement().getXRadiusToA()*getRadius());
-		old.setX(old.getX() + new_ref.getXRadiusToA()*getRadius());
-		old.setY(old.getY() - old.getReferedElement().getYApothemsToA()*getApothem());
-		old.setY(old.getY() + new_ref.getYApothemsToA()*getApothem());
-		old.setReferedElement(new_ref);
 	}
 }

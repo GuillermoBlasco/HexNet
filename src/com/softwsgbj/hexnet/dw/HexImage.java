@@ -9,7 +9,7 @@ public class HexImage  {
 	private GeometricAdapter adapter;
 	
 	HexImage(Hexagon origin, GeoPoint point,GeometricAdapter adapter) {
-		this.draw = origin.getAsImage();
+		this.draw = origin.getAsDraw();
 		this.point = point;
 		this.adapter = adapter;
 	}

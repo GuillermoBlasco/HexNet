@@ -238,11 +238,5 @@ public class GeoElements {
 			}
 		}
 	}
-	public static class OfReference {
-		public enum Points{
-			CENTER,
-			APEX_NE, APEX_SE, APEX_SW, APEX_NW,
-		}
-	}
 
 }

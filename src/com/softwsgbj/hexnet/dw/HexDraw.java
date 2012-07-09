@@ -31,7 +31,7 @@ public class HexDraw {
 		images.put(key, value);
 	}
 	public void actualizeDraw(){
-		images = hex.getAsImage().images;
+		images = hex.getAsDraw().images;
 	}
 	
 }
