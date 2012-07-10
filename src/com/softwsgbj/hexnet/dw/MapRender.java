@@ -3,7 +3,6 @@ package com.softwsgbj.hexnet.dw;
 import com.softwsgbj.hexnet.HexPoint;
 import com.softwsgbj.hexnet.AbstractHexagon;
 import com.softwsgbj.hexnet.Map;
-import com.softwsgbj.hexnet.dw.GeoElements.OfHexagon.Points;
 
 public abstract class MapRender {
 

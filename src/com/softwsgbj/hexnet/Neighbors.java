@@ -25,7 +25,7 @@ public class Neighbors<H extends HexPoint> {
 	protected H origin;
 	protected Neighbors(H origin){
 		this.origin = origin;
-		this.neighbors = new ArrayList<H>(6);
+		this.neighbors = new ArrayList<H>();
 	}
 	Neighbors(H origin, H[] n){
 		this(origin);
@@ -57,14 +57,10 @@ public class Neighbors<H extends HexPoint> {
 		return this.neighbors;
 	}
 	public ArrayList<H> getAllTrimmed(){
-		int size = 0;
-		for(int i = 0; i < 6; i++)
-			if(neighbors.get(i) != null) size++;
-		ArrayList<H> h = new ArrayList<H>(size);
-		int j = 0;
+		ArrayList<H> h = new ArrayList<H>();
 		for(int i = 0; i < 6; i++)
 			if(neighbors.get(i)!= null) 
-				h.set(j, neighbors.get(i));
+				h.add(neighbors.get(i));
 		return h;
 	}
 
@@ -72,8 +68,10 @@ public class Neighbors<H extends HexPoint> {
 	<K extends H> Neighbors<K> castCopy(){
 		Neighbors<K> n = new Neighbors<K>((K) this.origin);
 		
-		for(int i = 0; i < 6; i++)
-			n.neighbors.set(i, (K) neighbors.get(i));
+		for(int i = 0; i < 6; i++){
+			K k =(K) neighbors.get(i);
+			n.neighbors.add(k);
+		}
 		return n;
 	}
 }
