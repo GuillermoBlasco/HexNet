@@ -24,7 +24,7 @@ import com.softwsgbj.hexnet.dw.HexDraw;
  * @author GuillermoBlascoJimenez
  * @version 1.0
  */
-public abstract class Hexagon extends HexPoint {
+public abstract class AbstractHexagon extends HexPoint {
 
 	private static final long serialVersionUID = 177L;
 	
@@ -33,7 +33,7 @@ public abstract class Hexagon extends HexPoint {
 	 * @param x x coordinate of hexagon in map.
 	 * @param y y coordinate of hexagon in map.
 	 */
-	protected Hexagon(int x, int y) {
+	protected AbstractHexagon(int x, int y) {
 		super(x, y);
 	}
 
