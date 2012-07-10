@@ -39,7 +39,7 @@ public class HexExplorer implements Runnable {
 	}
 	
 	public void nextStep(){
-		MyHex current = nexts.poll();
+		MyHex current = nexts.pollLast();
 		current.visit();
 		ArrayList<MyHex> k = m.getNeighbors(current).getAllTrimmed();
 		for(MyHex h : k)
