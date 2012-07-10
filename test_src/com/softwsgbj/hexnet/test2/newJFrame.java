@@ -134,6 +134,7 @@ public class newJFrame extends javax.swing.JFrame {
 
     private void buildMapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buildMapActionPerformed
        int x,y;
+       
        try{
     	   x = Integer.valueOf(this.xField.getText());
     	   y = Integer.valueOf(this.yField.getText());
@@ -158,6 +159,10 @@ public class newJFrame extends javax.swing.JFrame {
        geo.setMetric(metric);
        this.canvas.setSize((int)geo.sizeX(), (int)geo.sizeY()+10);
        this.canvas.paintAll(geo, m);
+       if(this.explorer != null){
+    	   explorer.stop();
+    	   explorer = null;
+       }
        this.explorer = new HexExplorer(m, geo, canvas);
        this.explorer.start();
     }
