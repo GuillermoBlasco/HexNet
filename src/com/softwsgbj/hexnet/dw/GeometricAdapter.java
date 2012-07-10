@@ -26,20 +26,15 @@ public class GeometricAdapter {
 
 	private final Map<?> map;
 	private LinkedList<HexImage> childs;
-	
-	private GeoElements.OfHexagon.NotableSegments reference_vector;
-	private double reference_vector_size;
+	private Metric metric;
 	
 	public GeometricAdapter(Map<?> m){
 		this.map = m;
 		childs = new LinkedList<HexImage> ();
-		reference_vector = GeoElements.OfHexagon.NotableSegments.RADIUS;
-		reference_vector_size = 1.0;
+		metric = new Metric(GeoElements.OfHexagon.NotableSegments.RADIUS, 1.0);
 	}
-	public void setMetric(GeoElements.OfHexagon.NotableSegments ref, double value){
-		reference_vector = ref;
-		if(value > 0)
-			reference_vector_size = value;
+	public void setMetric(Metric metric){
+		this.metric = metric;
 	}
 	public GeoPoint getPointOfHexagon(GeoElements.OfHexagon.Points which, HexPoint p){
 
@@ -114,10 +109,10 @@ public class GeometricAdapter {
 			return ((y)*2 +1.0)*getApothem();
 	}
 	protected double getApothem(){
-		return this.reference_vector.getApothemProportion()*this.reference_vector_size;
+		return this.metric.getApothemSize();
 	}
-	protected double getRadius(){
-		return this.reference_vector.getRadiusProportion()*this.reference_vector_size;
+	protected double getRadius(){	
+		return this.metric.getRadiusSize();
 	}
 	protected void actualizeChildRefernce(HexImage child){
 		GeoPoint p = this.getPoint(child.getPoint().getReferedElement(), child.getHexagon());

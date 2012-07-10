@@ -19,21 +19,35 @@ import java.io.Serializable;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Vector;
-
+/**
+ * 
+ * @author GuillermoBlascoJimenez
+ * @version 1.0
+ * @param <H>
+ */
 public class Map<H extends Hexagon> implements Serializable, PointFactory{
 
 	private static final long serialVersionUID = 177L;
-	
+	/*table of hexagons*/
 	private AbstractList<H>[] table;
-	
+	/**
+	 * Builds map with a vector. Use this constructor if you need a synchronized
+	 * access to data.
+	 * @param table Vector that contains data.
+	 */
 	public Map(Vector<H>[] table){
 		this.table = table;
 	}
+	/**
+	 * Builds map with a array list. Use this constructor if you don't care
+	 * about synchronization.
+	 * @param table ArrayList that contains data.
+	 */
 	public Map(ArrayList<H>[] table){
 		this.table = table;
 	}
 	public Relations.PointInMap relation(HexPoint p){
-		if(p.x() >= getBoundX() || p.y() >= getBoundY() || p.x() < 0 || p.y() < 0)
+		if(p== null || p.x() >= getBoundX() || p.y() >= getBoundY() || p.x() < 0 || p.y() < 0)
 			return Relations.PointInMap.IS_OUT_OF_BOUNDS;
 		else if(this.getH(p.x(),p.y()) == null)
 			return Relations.PointInMap.IS_OUT_OF_EXISTENCE;
