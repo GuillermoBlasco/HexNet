@@ -13,7 +13,7 @@
 //
 //	You should have received a copy of the GNU General Public License
 //	along with HexNet.  If not, see <http://www.gnu.org/licenses/>.
-package com.softwsgbj.hexnet.test;
+package com.softwsgbj.hexnet.test2;
 
 import com.softwsgbj.hexnet.Map;
 import com.softwsgbj.hexnet.dw.GeoElements;
@@ -31,6 +31,7 @@ public class newJFrame extends javax.swing.JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private HexExplorer explorer;
 	/**
      * Creates new form newJFrame
      */
@@ -156,7 +157,9 @@ public class newJFrame extends javax.swing.JFrame {
        Metric metric = new Metric(GeoElements.OfHexagon.NotableSegments.DIAMETER, 50);
        geo.setMetric(metric);
        this.canvas.setSize((int)geo.sizeX(), (int)geo.sizeY()+10);
-       this.canvas.paintHex(geo, m);
+       this.canvas.paintAll(geo, m);
+       this.explorer = new HexExplorer(m, geo, canvas);
+       this.explorer.start();
     }
 
     /**

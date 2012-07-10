@@ -13,7 +13,7 @@
 //
 //	You should have received a copy of the GNU General Public License
 //	along with HexNet.  If not, see <http://www.gnu.org/licenses/>.
-package com.softwsgbj.hexnet.test;
+package com.softwsgbj.hexnet.test2;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,15 +27,30 @@ class MyHex extends AbstractHexagon {
 
 	private static final long serialVersionUID = 1L;
 
+	private boolean visited;
+	
 	MyHex(int x, int y) {
 		super(x, y);
+		visited = false;
 	}
 
+	public void visit(){
+		visited = true;
+	}
+	public boolean hasBeenVisited(){
+		return visited;
+	}
+	
 	@Override
 	public HexDraw getAsDraw() {
 		HexDraw d = new HexDraw(this);
 		try {
-			d.setImage("I", ImageIO.read(new File("test_res/void_hex.png")));
+			String file;
+			if(!visited)
+				file = "test_res/void_hex.png";
+			else
+				file = "test_res/fill_hex.png";
+			d.setImage("I", ImageIO.read(new File(file)));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

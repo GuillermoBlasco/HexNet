@@ -1,5 +1,5 @@
 //	LICENSE:
-//	MyHex.java is part of HexNet.
+//	MyMapBuilder.java is part of HexNet.
 //
 //	HexNet is free software: you can redistribute it and/or modify
 //	it under the terms of the GNU General Public License as published by
@@ -13,33 +13,34 @@
 //
 //	You should have received a copy of the GNU General Public License
 //	along with HexNet.  If not, see <http://www.gnu.org/licenses/>.
-package com.softwsgbj.hexnet.test;
+package com.softwsgbj.hexnet.test2;
 
-import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
+import com.softwsgbj.hexnet.HexMapBuilder;
+import com.softwsgbj.hexnet.Map;
 
-import com.softwsgbj.hexnet.AbstractHexagon;
-import com.softwsgbj.hexnet.dw.HexDraw;
+class MyMapBuilder implements HexMapBuilder<MyHex> {
 
-class MyHex extends AbstractHexagon {
-
-	private static final long serialVersionUID = 1L;
-
-	MyHex(int x, int y) {
-		super(x, y);
-	}
-
-	@Override
-	public HexDraw getAsDraw() {
-		HexDraw d = new HexDraw(this);
-		try {
-			d.setImage("I", ImageIO.read(new File("test_res/void_hex.png")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return d;
-	}
+	private int x;
+	private int y;
 	
+	
+	public void setSize(int x, int y){
+		this.x = x;
+		this.y = y;
+	}
+	@Override
+	public Map<MyHex> buildMap() {
+		ArrayList<MyHex>[] a = new ArrayList[x];
+		ArrayList<MyHex> b0 ;
+		for(int i = 0; i < x; i++){
+			b0 = new ArrayList<MyHex>(y);
+			for(int j = 0; j < y; j++){
+				b0.add(j, new MyHex(i,j));
+			}
+			a[i] = b0;
+		}
+		return new Map<MyHex>(a);
+	}
 }

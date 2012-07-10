@@ -13,7 +13,7 @@
 //
 //	You should have received a copy of the GNU General Public License
 //	along with HexNet.  If not, see <http://www.gnu.org/licenses/>.
-package com.softwsgbj.hexnet.test;
+package com.softwsgbj.hexnet.test2;
 
 import java.awt.Canvas;
 import java.awt.Graphics;
@@ -63,7 +63,7 @@ public class HexCanvas extends Canvas{
 		
 		}
 	}
-	public void paintHex( GeometricAdapter adapter, Map m){
+	public void paintAll( GeometricAdapter adapter, Map m){
 
 		this.h = new HexImage[m.getBoundX()*m.getBoundY()];
 		for(int i = 0; i < m.getBoundX(); i++){
@@ -78,5 +78,15 @@ public class HexCanvas extends Canvas{
 		task = Task.PAINT;
 		this.repaint();
 	}
-	
+	public void paintOne(GeometricAdapter adapter, Map m, int x, int y){
+
+		this.h = new HexImage[1];
+		AbstractHexagon aux = m.getHexagonIn(m.buildPoint(x,y));
+		if(aux != null)
+			h[0] = adapter.getImageOf(aux, GeoElements.OfRectangle.Points.APEX_NW);
+		else
+			h[0] = null;
+		task = Task.PAINT;
+		this.repaint();
+	}
 }
