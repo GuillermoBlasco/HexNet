@@ -18,22 +18,22 @@ package com.softwsgbj.hexnet.dw;
 import java.util.TreeMap;
 
 import com.softwsgbj.hexnet.HexPoint;
-import com.softwsgbj.hexnet.Hexagon;
+import com.softwsgbj.hexnet.AbstractHexagon;
 
 public class HexDraw {
 
-	private final Hexagon hex;
+	private final AbstractHexagon hex;
 	private TreeMap<String, Object> images;
 	
-	public HexDraw(Hexagon origin){
+	public HexDraw(AbstractHexagon origin){
 		this(origin, new TreeMap<String,Object>());
 	}
-	public HexDraw(Hexagon origin, TreeMap<String, Object> images){
+	public HexDraw(AbstractHexagon origin, TreeMap<String, Object> images){
 		this.hex = origin;
 		this.images = images;
 	}
 	
-	public Hexagon getHexagon(){
+	public AbstractHexagon getHexagon(){
 		return hex;
 	}
 	public HexPoint getHexPoint(){

@@ -30,7 +30,7 @@ public interface Localizable{
 	 * @param m Map where hexagon object must be retrieved.
 	 * @return The associated hexagon object.
 	 */
-	public Hexagon getHexIn(Map<?> m);
+	public AbstractHexagon getHexIn(Map<?> m);
 	/**
 	 * Returns the set of neighbors of this object without checking the
 	 * existence.
@@ -44,6 +44,6 @@ public interface Localizable{
 	 * @param m Map where point is contained.
 	 * @return The neighbors hexagons of these points.
 	 */
-	public Neighbors<Hexagon> getNeighbors(Map<?> m);
+	public Neighbors<AbstractHexagon> getNeighbors(Map<?> m);
 	
 }

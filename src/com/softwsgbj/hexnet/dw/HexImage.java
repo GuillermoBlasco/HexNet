@@ -15,7 +15,7 @@
 //	along with HexNet.  If not, see <http://www.gnu.org/licenses/>.
 package com.softwsgbj.hexnet.dw;
 
-import com.softwsgbj.hexnet.Hexagon;
+import com.softwsgbj.hexnet.AbstractHexagon;
 
 public class HexImage  {
 
@@ -23,7 +23,7 @@ public class HexImage  {
 	private GeoPoint point;
 	private GeometricAdapter adapter;
 	
-	HexImage(Hexagon origin, GeoPoint point,GeometricAdapter adapter) {
+	HexImage(AbstractHexagon origin, GeoPoint point,GeometricAdapter adapter) {
 		this.draw = origin.getAsDraw();
 		this.point = point;
 		this.adapter = adapter;
@@ -45,7 +45,7 @@ public class HexImage  {
 	public void actualizeDraw() {
 		draw.actualizeDraw();
 	}
-	public Hexagon getHexagon(){
+	public AbstractHexagon getHexagon(){
 		return draw.getHexagon();
 	}
 	

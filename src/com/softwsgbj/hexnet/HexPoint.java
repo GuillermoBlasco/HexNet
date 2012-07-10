@@ -71,7 +71,7 @@ public class HexPoint implements Cloneable, Serializable, Localizable {
 	 * @return The associated hexagon object.
 	 */
 	@Override
-	public Hexagon getHexIn(Map<?> m) {
+	public AbstractHexagon getHexIn(Map<?> m) {
 		return m.getHexagonIn(this);
 	}
 	/**
@@ -104,12 +104,12 @@ public class HexPoint implements Cloneable, Serializable, Localizable {
 	 * @return The neighbors hexagons of these points.
 	 */
 	@Override
-	public Neighbors<Hexagon> getNeighbors(Map<?> m) {
-		Hexagon[] h = new Hexagon[6];
+	public Neighbors<AbstractHexagon> getNeighbors(Map<?> m) {
+		AbstractHexagon[] h = new AbstractHexagon[6];
 		ArrayList<HexPoint> array_p = this.getNeighbors().getAll();
 		for(int i = 0; i < 6; i ++)
 			h[i] = m.getHexagonIn(array_p.get(i));
-		return new Neighbors<Hexagon>(m.getHexagonIn(this),h);
+		return new Neighbors<AbstractHexagon>(m.getHexagonIn(this),h);
 	}
 
 	// OBJECT METHODS OVERIDE

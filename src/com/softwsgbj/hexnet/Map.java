@@ -25,7 +25,7 @@ import java.util.Vector;
  * @version 1.0
  * @param <H>
  */
-public class Map<H extends Hexagon> implements Serializable, PointFactory{
+public class Map<H extends AbstractHexagon> implements Serializable, PointFactory{
 
 	private static final long serialVersionUID = 177L;
 	/*table of hexagons*/

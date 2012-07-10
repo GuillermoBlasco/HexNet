@@ -21,7 +21,7 @@ package com.softwsgbj.hexnet;
  * @version 1.0
  * @param <H> Class of hexagons over map is built.
  */
-public interface HexMapBuilder<H extends Hexagon> {
+public interface HexMapBuilder<H extends AbstractHexagon> {
 
 	/**
 	 * Returns a complete map built.

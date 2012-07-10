@@ -18,7 +18,7 @@ package com.softwsgbj.hexnet.dw;
 import java.util.LinkedList;
 
 import com.softwsgbj.hexnet.HexPoint;
-import com.softwsgbj.hexnet.Hexagon;
+import com.softwsgbj.hexnet.AbstractHexagon;
 import com.softwsgbj.hexnet.Map;
 import com.softwsgbj.hexnet.dw.GeoElements.Point;
 
@@ -53,7 +53,7 @@ public class GeometricAdapter {
 	public GeoSegment getSegmentOfRectangleContainer(GeoElements.OfRectangle.Segments which, HexPoint p){
 		return new GeoSegment(which, getPointOfRectangleContainer(which.getOrigin(), p), getPointOfRectangleContainer(which.getDestiny(), p));
 	}
-	public HexImage getImageOf(Hexagon hex, Point reference){
+	public HexImage getImageOf(AbstractHexagon hex, Point reference){
 		HexImage h = new HexImage(hex, this.getPoint(reference, hex.getPoint()),this);
 		this.attach(h);
 		return h;
